@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/css/normalize.css">
+    <script src="../src/js/jquery.min.js"></script>
+    <style type="text/css">
+        ul{ margin-bottom: 50px;}
+        ul li{
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            margin: 0 15px;
+            font-size: 24px;
+            font-weight: bolder;
+            color: black;
+            background-color: coral;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>普通的循环绑定事件机制实现改变点击目标的颜色
+        <ul class="onclick_1">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+    <script>
+        //普通的循环绑定事件机制实现改变点击目标的颜色
+        let ul_li = $('.onclick_1>li');
+        for(let i = 0;i < ul_li.length;i++){
+            $(ul_li[i]).on('click',function(){
+                //先重置所有对象的背景颜色
+                for(let j=0;j < ul_li.length;j++){
+                    $(ul_li[j]).css('background-color','coral');
+                }
+                //改变当前触发点击事件对象的背景颜色
+                $(ul_li[i]).css('background-color','blue');
+            });
+        }
+    </script>
+    <div>
+        <ul class="onclick_2">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+    <script>
+        //事件委托机制实现同样的效果
+        let ul = $('.onclick_2');
+        ul.on('click',function(e){
+            $(e.target).css('background-color','blue');
+        });
+        //这里假如考虑到li标签有上百个，不使用循环体来去除上次被选中对象的更改颜色效果，该怎么做？
+
+
+
+
+
+    </script>
+</body>
+</html>

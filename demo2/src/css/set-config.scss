@@ -1,0 +1,18 @@
+$charset:"UTF-8";
+
+//文本颜色
+$main_text_color: #a0a0a0;
+$second_text_color: #00aab7;
+$third_text_color: #000000;
+$fourth_text_color: #b45d01;
+//背景色调
+$first_color:#e0e0e0;
+$second_color:#f5f5f5;
+
+@mixin webkit($method,$value){
+    -webkit-#{$method}: $value;
+    -moz-#{$method}: $value;
+    -ms-#{$method}: $value;
+    -o-#{$method}: $value;
+    #{$method}: $value;
+}
